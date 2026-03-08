@@ -1,3 +1,6 @@
+Here it is with the em dash added back as a barrier between title and author:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,22 +8,191 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bookshelf · Habibah Ibrahim</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .tabs {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid #ccc;
+      margin-bottom: 1.5rem;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      padding: 0.5rem 1.2rem;
+      cursor: pointer;
+      font-size: 1rem;
+      font-family: inherit;
+      color: #888;
+      margin-bottom: -1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .tab-btn:hover { color: #333; }
+    .tab-btn.active { color: #111; border-bottom: 2px solid #111; }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+    .library-blurb { font-style: italic; color: #555; margin-bottom: 2rem; }
+    .genre-section { margin-bottom: 2rem; }
+    .genre-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #999;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 0.3rem;
+      margin-bottom: 0.8rem;
+    }
+    .book-list { list-style: none; padding: 0; margin: 0; }
+    .book-list li { padding: 0.25rem 0; font-size: 0.95rem; color: #222; }
+    .book-author { color: #888; font-size: 0.85rem; }
+    .book-title-ar { font-size: 0.9rem; direction: rtl; display: inline-block; }
+  </style>
 </head>
 <body>
   <div class="container">
     <a href="index.html" class="back">← Home</a>
-    
     <h1>Bookshelf</h1>
-    
     <div class="Goal">
-      <p> The goal for this part of my website is to have a list of my current library. One of my life goals is having a home where the library is the heart of it. I love collecting books across many topics — I think it keeps one humble. I'm also a huge fan of Umberto Eco's concept of the antilibrary: a collection of unread books one keeps or collects. In that spirit, the list won't be divided into neat categories. I find that boring. Instead, I'll highlight the books that made a strong impression on me, those I'd recommend to others.</p>
-      
-      <h2>Books</h2>
-      
-      
+      <p>The goal for this part of my website is to have a list of my current library. One of my life goals is having a home where the library is the heart of it. I love collecting books across many topics, I think it keeps one humble. I'm also a huge fan of Umberto Eco's concept of the antilibrary: a collection of unread books one keeps or collects. In that spirit, the list won't be divided into neat categories. I find that boring. Instead, I'll highlight the books that made a strong impression on me, those I'd recommend to others.</p>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab(event, 'books')">Books</button>
+      <button class="tab-btn" onclick="switchTab(event, 'wishlist')">Wishlist</button>
+    </div>
+
+    <div id="books" class="tab-panel active">
+      <p class="library-blurb">This is my ever-growing library. One day I'll own hundreds of books.</p>
+
+      <div class="genre-section">
+        <div class="genre-title">Literary Fiction</div>
+        <ul class="book-list">
+          <li>Song of Solomon <span class="book-author">— Toni Morrison</span></li>
+          <li>Beloved <span class="book-author">— Toni Morrison</span></li>
+          <li>The Winter of Our Discontent <span class="book-author">— John Steinbeck</span></li>
+          <li>The Days of Abandonment <span class="book-author">— Elena Ferrante</span></li>
+          <li>The Lying Life of Adults <span class="book-author">— Elena Ferrante</span></li>
+          <li>A Farewell to Arms <span class="book-author">— Ernest Hemingway</span></li>
+          <li>The Sun Also Rises <span class="book-author">— Ernest Hemingway</span></li>
+          <li>The Unvanquished <span class="book-author">— William Faulkner</span></li>
+          <li>Swan's Way <span class="book-author">— Marcel Proust</span></li>
+          <li>The Mind-Body Problem <span class="book-author">— Rebecca Goldstein</span></li>
+          <li>The Bell Jar <span class="book-author">— Sylvia Plath</span></li>
+          <li>Normal People <span class="book-author">— Sally Rooney</span></li>
+          <li>The God of Small Things <span class="book-author">— Arundhati Roy</span></li>
+          <li>The Alley Cat <span class="book-author">— Yves Beauchemin</span></li>
+          <li>Gifts <span class="book-author">— Nuruddin Farah</span></li>
+          <li>To the Lighthouse <span class="book-author">— Virginia Woolf</span></li>
+          <li>Birthright <span class="book-author">— Nora Roberts</span></li>
+          <li>The Autumn of the Patriarch <span class="book-author">— Gabriel García Márquez</span></li>
+        </ul>
+      </div>
+
+      <div class="genre-section">
+        <div class="genre-title">Arabic Literature</div>
+        <ul class="book-list">
+          <li><span class="book-title-ar">معزوفة اليوم السابع</span> <span class="book-author">— جلال برجس</span></li>
+          <li><span class="book-title-ar">ثلاثية غرناطة</span> <span class="book-author">— رضوى عاشور</span></li>
+          <li><span class="book-title-ar">اجبر هذا الأمل إن استطعت</span> <span class="book-author">— نجوان درويش</span></li>
+          <li><span class="book-title-ar">أحببتك أكثر مما ينبغي</span> <span class="book-author">— عبير</span></li>
+          <li>The Anchor Book of Modern Arabic Fiction <span class="book-author">— ed. Denys Johnson-Davies</span></li>
+        </ul>
+      </div>
+
+      <div class="genre-section">
+        <div class="genre-title">Speculative Fiction &amp; Fantasy</div>
+        <ul class="book-list">
+          <li>The Satanic Verses <span class="book-author">— Salman Rushdie</span></li>
+          <li>The Dispossessed <span class="book-author">— Ursula K. Le Guin</span></li>
+          <li>The Priory of the Orange Tree <span class="book-author">— Samantha Shannon</span></li>
+          <li>Dream Fever <span class="book-author">— Karen Marie Moning</span></li>
+        </ul>
+      </div>
+
+      <div class="genre-section">
+        <div class="genre-title">Poetry</div>
+        <ul class="book-list">
+          <li>Blue Horses <span class="book-author">— Mary Oliver</span></li>
+          <li>The Butterfly's Burden <span class="book-author">— Mahmoud Darwish</span></li>
+          <li>Love Poems <span class="book-author">— Pablo Neruda</span></li>
+          <li>Selected Poems <span class="book-author">— W.H. Auden</span></li>
+          <li>The Flame <span class="book-author">— Leonard Cohen</span></li>
+          <li>The Inferno <span class="book-author">— Dante Alighieri</span></li>
+          <li>A Midsummer Night's Dream <span class="book-author">— William Shakespeare</span></li>
+        </ul>
+      </div>
+
+      <div class="genre-section">
+        <div class="genre-title">Philosophy</div>
+        <ul class="book-list">
+          <li>Oneself as Another <span class="book-author">— Paul Ricœur</span></li>
+        </ul>
+      </div>
+
+      <div class="genre-section">
+        <div class="genre-title">History &amp; Politics</div>
+        <ul class="book-list">
+          <li>The Scramble for Africa <span class="book-author">— Thomas Pakenham</span></li>
+          <li>Dead Aid <span class="book-author">— Dambisa Moyo</span></li>
+          <li>A Farewell to Alms <span class="book-author">— Gregory Clark</span></li>
+          <li>Public Policy in Canada: An Introduction <span class="book-author">— Michael Howlett et al.</span></li>
+          <li>Eve Bites Back <span class="book-author">— Anna Beer</span></li>
+        </ul>
+      </div>
+
+      <div class="genre-section">
+        <div class="genre-title">Self-Help &amp; Psychology</div>
+        <ul class="book-list">
+          <li>The Charisma Myth <span class="book-author">— Olivia Fox Cabane</span></li>
+          <li>How to Become a Straight-A Student <span class="book-author">— Cal Newport</span></li>
+          <li>The Mindful Way Through Depression <span class="book-author">— Mark Williams et al.</span></li>
+        </ul>
+      </div>
+
+      <div class="genre-section">
+        <div class="genre-title">Writing, Language &amp; Reference</div>
+        <ul class="book-list">
+          <li>The Elements of Style <span class="book-author">— William Strunk Jr. &amp; E.B. White</span></li>
+          <li>Statistics as Principled Argument <span class="book-author">— Robert P. Abelson</span></li>
+          <li>The Art of Description <span class="book-author">— Mark Doty</span></li>
+          <li>Cooking as Courtship <span class="book-author">— Susan Weingand</span></li>
+          <li>Kiss and Tell: A Trivial Study of Smooching <span class="book-author">— Kevin Dwyer</span></li>
+          <li>Merriam-Webster Dictionary</li>
+          <li>Colloquial Somali</li>
+          <li>English-Somali Dictionary</li>
+          <li>Somali Textbook</li>
+          <li>A Field Guide to DTK's Art Walk</li>
+        </ul>
+      </div>
+
+      <div class="genre-section">
+        <div class="genre-title">Sacred Texts</div>
+        <ul class="book-list">
+          <li>The Quran</li>
+        </ul>
+      </div>
+
+      <hr>
+      <p><em>Last updated: January 2026</em></p>
+    </div>
+
+    <div id="wishlist" class="tab-panel">
+      <h2>Wishlist</h2>
+      <!-- Add your wishlist here -->
       <hr>
       <p><em>Last updated: January 2026</em></p>
     </div>
   </div>
+
+  <script>
+    function switchTab(event, tabId) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    }
+  </script>
 </body>
 </html>
+```
